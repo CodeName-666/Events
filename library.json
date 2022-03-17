@@ -1,0 +1,22 @@
+{
+  "name": "SwTimer",
+  "version": "1.0.0",
+  "description": "Simple software timer",
+  "keywords": "Timer, Software Timer, SW Timer",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/CodeName-666/SwTimer"
+  },
+  "authors":
+  [
+    {
+      "name": "Christof Seidel",
+      "email": "SeidC2221@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*"
+}
