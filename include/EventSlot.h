@@ -28,7 +28,7 @@ template <class... Type> class Slot {
         virtual ~Slot() { }
 
         /**
-         * @brief
+         * @brief 
          * @param param
          * Allows the slot to be called by the signal during firing.
          */

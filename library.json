@@ -1,8 +1,12 @@
 {
   "name": "Events",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Library to integrate Signal and Slot functionality, QT like",
   "keywords": "Signal, Slots, Event, Events",
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*",
+
   "repository":
   {
     "type": "git",
@@ -15,8 +19,5 @@
       "email": "SeidC2221@gmail.com",
       "maintainer": true
     }
-  ],
-  "license": "MIT",
-  "frameworks": "*",
-  "platforms": "*"
+  ] 
 }

@@ -2,7 +2,12 @@
 #define EVENTSIGNAL_H
 
 #include <stdint.h>
-#include <vector>
+#ifdef ARDUINO_ARCH_AVR
+   // #include "ArduinoSTL.h"
+   #include <vector>
+#else 
+    #include <vector>
+#endif
 #include "EventSlot.h"
 
 
@@ -20,8 +25,8 @@ template <class... Type> class Signal {
     /**
      * @brief Construct a new Signal object
      */
-    Signal(uint16_t max_connections = 1) : m_max_onnections(max_connections),
-                                         m_size_of_connections(0)
+    Signal(uint16_t max_connections = UINT16_MAX) : m_max_onnections(max_connections),
+                                                    m_size_of_connections(0)
     {
         /*All list are initiated whith null to reduce RAM usage*/
         m_connected_signals = nullptr;
