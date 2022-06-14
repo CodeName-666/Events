@@ -89,7 +89,7 @@ Each of these slots will also be extended to a parameter with the following form
 The next step is to implement the Slot methods, and this is quite simple. Each Slot needs a class method with the following structure:
  
 ```c++
-    void *<USED_SLOT_NAME>*Slot(*<PARAMETER>*){};
+    void <USED_SLOT_NAME>Slot( *<PARAMETER>*){};
 ```
  
 These methods will be called each time a signal will be emitted.
