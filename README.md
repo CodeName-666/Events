@@ -4,7 +4,7 @@
 This library is implementation of a Event Signal and Slot concepet, wich allows to connect Signals and Slots between function and class methods. It was implemented like the QT Signal Slot concept but without any moc compiler.
 
 This library was forked from 
-    - https://github.com/tomstewart89/Callback 
+- https://github.com/tomstewart89/Callback 
 and updated with further features.
 
 The implementation is template based and allows you to craete signals and slots whith
