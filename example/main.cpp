@@ -92,19 +92,19 @@ ThirdReceiver thirdReceiver;
 void setup() {
   
   //Test 1: Max two connection allowed, thridReceiver will not be executed...
-  EVENT_CONNECT_SIGNAL2SLOT(emiter.m_click_signal,receiver.m_onClick_slot);
-  EVENT_CONNECT_SIGNAL2SIGNAL(emiter.m_click_signal,secondReceiver.m_onClick_slot);
-  EVENT_CONNECT_SIGNAL2SIGNAL(emiter.m_click_signal,thirdReceiver.m_onClick_slot);
+  EVENT_CONNECT(emiter.m_click_signal,receiver.m_onClick_slot);
+  EVENT_CONNECT(emiter.m_click_signal,secondReceiver.m_onClick_slot);
+  EVENT_CONNECT(emiter.m_click_signal,thirdReceiver.m_onClick_slot);
 
   //Test2: Signal and slot connecton with multiple parameter
-  EVENT_CONNECT_SIGNAL2SLOT(emiter.m_test_signal,receiver.m_test_slot);
+  EVENT_CONNECT(emiter.m_test_signal,receiver.m_test_slot);
 
   //Test3: Redirect Signal over another sigenl: Connect Signal_1 to Signal_2 and then Singal_2 to Signal_3;
-  EVENT_CONNECT_SIGNAL2SIGNAL(emiter.m_redirect_signal,secondReceiver.m_onRedirect_signal);
-  EVENT_CONNECT_SIGNAL2SLOT(secondReceiver.m_onRedirect_signal,emiter.m_redirect_signal);
+  EVENT_CONNECT(emiter.m_redirect_signal,secondReceiver.m_onRedirect_signal);
+  EVENT_CONNECT(secondReceiver.m_onRedirect_signal,emiter.m_redirect_signal);
 
   //Test4: Signal Slot without any parameter
-  EVENT_CONNECT_SIGNAL2SLOT(emiter.m_voidTest_signal,receiver.m_voidTest_slot);
+  EVENT_CONNECT(emiter.m_voidTest_signal,receiver.m_voidTest_slot);
   
 }
 

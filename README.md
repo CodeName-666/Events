@@ -114,11 +114,11 @@ class Base {
  
 ## Connect Signal to Slots
  
-It is possible to connect Signals to Slot, but also Signals to Signals. The Signal to Signal connection is a good solution in case of Subclasses. There are also two macros which can be used to connect Signals and Signals/Slots.
+It is possible to connect Signals to Slot, but also Signals to Signals. The Signal to Signal connection is a good solution in case of Subclasses. There are one macro which can be used to connect Signals and Signals/Slots.
  
 ```c++
-    EVENT_CONNECT_SIGNAL2SIGNAL();
-    EVENT_CONNECT_SIGNAL2SLOT();
+    EVENT_CONNECT();
+    
 ```
  
 Example: Connect Signal to Slots
@@ -131,7 +131,7 @@ Base receiver;
  
 void setup(void)
 {
-    EVENT_CONNECT_SIGNAL2SLOT(sender.m_click_signal, receiver.m_onClick_slot);
+    EVENT_CONNECT(sender.m_click_signal, receiver.m_onClick_slot);
 }
 ```
  
