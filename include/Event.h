@@ -14,15 +14,8 @@
  * @param[in] __type__ Type of the Slot
  */
 #define EVENT_SLOT(__name__,args...)                                               \
-       EventSlot<args> m_##__name__##_slot{this , &ThisEventClass::__name__##Slot} \
-
-/**
- * @brief Global Macro defintion for classes to register for slots
- */
-#define EVENT_REG_FOR_SLOTS(__CLASS_NAME__)                                       \
-        template <class... T> using EventSlot = MethodSlot<__CLASS_NAME__, T...>; \
-        using ThisEventClass = __CLASS_NAME__;
-
+       EventSlot<args> m_##__name__##_slot{this , &ThisEventClass::__name__##Slot}      
+                                                                            
 /**
  * @brief Global Macro definiton of Event Signal 2 Slot connector
  */
@@ -31,10 +24,28 @@
     {                                                              \
         if((&SIGNAL != nullptr) && (&SLOT_OR_SIGNAL != nullptr))   \
         {                                                          \
-            SIGNAL.connect(SLOT_OR_SIGNAL);                                  \
+            SIGNAL.connect(SLOT_OR_SIGNAL);                        \
         }                                                          \
     }while(0)    
 
+/**
+ * @brief Global Macro defintion for classes to register for events and slots
+ */
+#define EVENT_REGISTER_EVENTS(__CLASS_NAME__)                                                \
+        template <class... T> using EventSlot = MethodSlot<__CLASS_NAME__, T...>;            \
+        using ThisEventClass = __CLASS_NAME__;                                               \
+        public:                                                                              \
+        template <class... Type>                                                             \
+        static void connect(Signal<Type ...>& tx_signal, const Slot<Type ...>& rx_slot)      \
+        {                                                                                    \
+            tx_signal.connect(rx_slot);                                                      \
+        }                                                                                    \
+        template <class... Type>                                                             \
+        static void connect(Signal<Type ...>& tx_signal, const Signal<Type ...>& rx_signal)  \
+        {                                                                                    \
+            tx_signal.connect(rx_signal);                                                    \
+        } 
+ 
 
 /**
  * @brief Global Macro definiton of Event Signal emitter

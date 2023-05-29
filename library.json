@@ -1,6 +1,6 @@
 {
   "name": "Events",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Library to integrate Signal and Slot functionality, QT like",
   "keywords": "Signal, Slots, Event, Events",
   "license": "MIT",
