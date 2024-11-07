@@ -15,7 +15,10 @@
  */
 #define EVENT_SLOT(__name__,args...)                                               \
        EventSlot<args> m_##__name__##_slot{this , &ThisEventClass::__name__##Slot}      
-                                                                            
+
+
+#define EVENT_FNC_SLOT(__name__,args...)                                            \
+        EventFncSlot<args> m_##__name__##_slot{__name__##Slot}
 /**
  * @brief Global Macro definiton of Event Signal 2 Slot connector
  */
@@ -53,9 +56,9 @@
 #define EVENT_EMIT(SIGNAL,args...)  \
     do                              \
     {                               \
-        if((&SIGNAL != nullptr))    \
+        if((&(SIGNAL) != nullptr))    \
         {                           \
-            SIGNAL.emit(args);      \
+            (SIGNAL).emit(args);      \
         }                           \
     }while(0) 
 
@@ -71,8 +74,12 @@ template <class... Type> class Signal;
  */
 template <class... T> using EventSignal = Signal<T...>;
 
-
-
+/**
+ * @brief 
+ * 
+ * @tparam T 
+ */
+template <class... T> using EventFncSlot = FunctionSlot<T...>;
 
 
 
