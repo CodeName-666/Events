@@ -1,7 +1,16 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#include "EventSignal.h"
+#include "Event_Config.h"
+
+#if (EVENT_USE_CPP_DEV_TYPE == EVENT_TYPE_EMBEDDED)
+    #include "EventSignalAv.h"
+#elif (EVENT_USE_CPP_DEV_TYPE == EVENT_TYPE_STANDARD)
+    #include "EventSignalLst.h"
+#else 
+    #error "!!!!Invlaid EVENT_USE_CPP_DEV_TYPE set!!!!"
+#endif
+
 #include "EventSlot.h"
 
 
