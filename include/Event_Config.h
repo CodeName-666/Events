@@ -14,4 +14,15 @@
     #define EVENT_USE_CPP_DEV_TYPE         EVENT_TYPE_EMBEDDED
 #endif
 
+
+
+#define EVENT_SIGNAL_PREFIX                 m_
+#define EVENT_SIGNAL_SUFFIX                 _signal
+
+#define EVENT_SLOT_PREFIX                   m_       
+#define EVENT_SLOT_SUFFIX                   _slot
+
+#define EVENT_SLOT_METHOD_PREFIX             
+#define EVENT_SLOT_METHOD_SUFFIX            Slot
+
 #endif

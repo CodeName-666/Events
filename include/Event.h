@@ -14,8 +14,14 @@
 #include "EventSlot.h"
 
 
+#define CONCAT(a, b, c) a##b##c
+
+#define EXPAND_AND_CONCAT(a, b, c) CONCAT(a, b, c)  
+
+
+
 #define EVENT_SIGNAL(__name__,args...)                                              \
-    EventSignal<args> m_##__name__##_signal
+    EventSignal<args> EXPAND_AND_CONCAT(EVENT_SIGNAL_PREFIX , __name__, EVENT_SIGNAL_SUFFIX)
 
 /**
  * @brief Global Macro definition to create a Event Slot with Method.
@@ -23,11 +29,12 @@
  * @param[in] __type__ Type of the Slot
  */
 #define EVENT_SLOT(__name__,args...)                                               \
-       EventSlot<args> m_##__name__##_slot{this , &ThisEventClass::__name__##Slot}      
+       EventSlot<args> EXPAND_AND_CONCAT(EVENT_SLOT_PREFIX, __name__, EVENT_SLOT_SUFFIX) {this , &ThisEventClass::EXPAND_AND_CONCAT(EVENT_SLOT_METHOD_PREFIX, __name__, EVENT_SLOT_METHOD_SUFFIX)}      
+    
 
 
 #define EVENT_FNC_SLOT(__name__,args...)                                            \
-        EventFncSlot<args> m_##__name__##_slot{__name__##Slot}
+        EventFncSlot<args> EXPAND_AND_CONCAT(EVENT_SLOT_PREFIX, __name__ , EVENT_SLOT_SUFFIX) {EXPAND_AND_CONCAT(EVENT_SLOT_METHOD_PREFIX, __name__, EVENT_SLOT_METHOD_SUFFIX)}
 /**
  * @brief Global Macro definiton of Event Signal 2 Slot connector
  */
