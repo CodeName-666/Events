@@ -19,7 +19,7 @@ public:
 
 class BaseReceiver {
 
-    EVENT_REG_FOR_SLOTS(BaseReceiver)               // Register classe BaseReceiver to allow creating SLOTS
+  EVENT_REGISTER_EVENTS(BaseReceiver)
 
   private: 
     void onClickSlot(int i) //Implementation of the Slot onClick 
@@ -54,8 +54,9 @@ public:
 
 class SecondReceiver {
   
-  EVENT_REG_FOR_SLOTS(SecondReceiver)               // Register classe BaseReceiver to allow creating SLOTS
+  EVENT_REGISTER_EVENTS(SecondReceiver)              // Register classe BaseReceiver to allow creating SLOTS
 
+  public:
 
   private:  
     void onClickSlot(int i)
@@ -70,7 +71,7 @@ class SecondReceiver {
 
 class ThirdReceiver {
   
-  EVENT_REG_FOR_SLOTS(ThirdReceiver)               // Register classe BaseReceiver to allow creating SLOTS
+  EVENT_REGISTER_EVENTS(ThirdReceiver)               // Register classe BaseReceiver to allow creating SLOTS
 
 
   private:  

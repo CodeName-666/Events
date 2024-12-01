@@ -23,6 +23,6 @@
 #define EVENT_SLOT_SUFFIX                   _slot
 
 #define EVENT_SLOT_METHOD_PREFIX             
-#define EVENT_SLOT_METHOD_SUFFIX            Slot
+#define EVENT_SLOT_METHOD_SUFFIX            
 
 #endif

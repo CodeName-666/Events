@@ -63,7 +63,7 @@
         static void connect(Signal<Type ...>& tx_signal, const Signal<Type ...>& rx_signal)  \
         {                                                                                    \
             tx_signal.connect(rx_signal);                                                    \
-        } 
+        }
  
 
 /**
