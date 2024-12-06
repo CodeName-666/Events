@@ -19,6 +19,10 @@
 #define EXPAND_AND_CONCAT(a, b, c) CONCAT(a, b, c)  
 
 
+#define EVENT_RESOLVE_SIGNAL(__name__) \
+    EXPAND_AND_CONCAT(EVENT_SIGNAL_PREFIX , __name__, EVENT_SIGNAL_SUFFIX)
+
+#define EVENT_RESOLVE_SLOT(__name__) \
 
 #define EVENT_SIGNAL(__name__,args...)                                              \
     EventSignal<args> EXPAND_AND_CONCAT(EVENT_SIGNAL_PREFIX , __name__, EVENT_SIGNAL_SUFFIX)
