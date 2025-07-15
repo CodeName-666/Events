@@ -102,7 +102,7 @@ void setup() {
 
   //Test3: Redirect Signal over another sigenl: Connect Signal_1 to Signal_2 and then Singal_2 to Signal_3;
   EVENT_CONNECT(emiter.m_redirect_signal,secondReceiver.m_onRedirect_signal);
-  EVENT_CONNECT(secondReceiver.m_onRedirect_signal,emiter.m_redirect_signal);
+  EVENT_CONNECT(secondReceiver.m_onRedirect_signal,receiver.m_onRedirect_slot);
 
   //Test4: Signal Slot without any parameter
   EVENT_CONNECT(emiter.m_voidTest_signal,receiver.m_voidTest_slot);

@@ -18,7 +18,7 @@ For easy usage of the Signals and Slots, there are a few generic macros which sh
 ## Include Events
 
 ```c++
-#include "Events.h"
+#include "Event.h"
 
 void setup() {
 
@@ -133,7 +133,7 @@ EVENT_CONNECT(signal, slot_or_signal);
 Example: Connect Signal to Slot
 
 ```c++
-#include "Events.h"
+#include "Event.h"
 
 Base sender;
 Base receiver;
@@ -151,7 +151,7 @@ To send data between signal and slot, there are two possibilities. Each signal i
 Example: Emit Signals
 
 ```c++
-#include "Events.h"
+#include "Event.h"
 
 Base sender;
 Base receiver;
