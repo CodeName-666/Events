@@ -8,7 +8,7 @@
 #elif (EVENT_USE_CPP_DEV_TYPE == EVENT_TYPE_STANDARD)
     #include "EventSignalLst.h"
 #else 
-    #error "!!!!Invlaid EVENT_USE_CPP_DEV_TYPE set!!!!"
+    #error "!!!!Invalid EVENT_USE_CPP_DEV_TYPE set!!!!"
 #endif
 
 #include "EventSlot.h"
@@ -23,7 +23,7 @@
     EXPAND_AND_CONCAT(EVENT_SIGNAL_PREFIX , __name__, EVENT_SIGNAL_SUFFIX)
 
 #define EVENT_RESOLVE_SLOT(__name__) \
-
+    EXPAND_AND_CONCAT(EVENT_SLOT_PREFIX , __name__, EVENT_SLOT_SUFFIX)
 #define EVENT_SIGNAL(__name__,args...)                                              \
     EventSignal<args> EXPAND_AND_CONCAT(EVENT_SIGNAL_PREFIX , __name__, EVENT_SIGNAL_SUFFIX)
 
@@ -105,4 +105,4 @@ template <class... T> using EventFncSlot = FunctionSlot<T...>;
 
 
 
-#endif // CALLBACK_H
+#endif // EVENT_H

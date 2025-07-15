@@ -26,7 +26,7 @@ public:
     /**
      * @brief Construct a new Signal object
      */
-    Signal(uint16_t max_connections = UINT16_MAX) : m_max_onnections(max_connections),
+    Signal(uint16_t max_connections = UINT16_MAX) : m_max_connections(max_connections),
                                                     m_size_of_connections(0)
     {
         /*All list are initiated whith null to reduce RAM usage*/
@@ -41,8 +41,16 @@ public:
      */
     virtual ~Signal()
     {
-        m_connected_slots->clear();
-        m_connected_signals->clear();
+        if (m_connected_slots != nullptr)
+        {
+            delete m_connected_slots;
+            m_connected_slots = nullptr;
+        }
+        if (m_connected_signals != nullptr)
+        {
+            delete m_connected_signals;
+            m_connected_signals = nullptr;
+        }
     }
 
     /**
@@ -59,7 +67,7 @@ public:
             m_connected_signals = new std::vector<Signal<Type...> *>();
         }
 
-        if (m_size_of_connections < m_max_onnections)
+        if (m_size_of_connections < m_max_connections)
         {
             m_connected_signals->push_back((Signal<Type...> *)&signal);
             m_size_of_connections++;
@@ -79,7 +87,7 @@ public:
             m_connected_slots = new std::vector<Slot<Type...> *>();
         }
 
-        if (m_size_of_connections < m_max_onnections)
+        if (m_size_of_connections < m_max_connections)
         {
             m_connected_slots->push_back((Slot<Type...> *)&slot);
             m_size_of_connections++;
@@ -102,7 +110,7 @@ public:
             {
                 if (&slot == m_connected_slots->at(i))
                 {
-                    m_connected_slots->erase(i);
+                    m_connected_slots->erase(m_connected_slots->begin() + i);
                     m_size_of_connections--;
                     found = true;
                 }
@@ -125,7 +133,7 @@ public:
             {
                 if (&signal == m_connected_signals->at(i))
                 {
-                    m_connected_signals->erase(i);
+                    m_connected_signals->erase(m_connected_signals->begin() + i);
                     m_size_of_connections--;
                     found = true;
                 }
@@ -169,7 +177,7 @@ public:
     }
 
 private:
-    uint16_t m_max_onnections;                           /*!< */
+    uint16_t m_max_connections;                          /*!< */
     uint16_t m_size_of_connections;                      /*!< */
     std::vector<Slot<Type...> *> *m_connected_slots;     /*!< */
     std::vector<Signal<Type...> *> *m_connected_signals; /*!< */
